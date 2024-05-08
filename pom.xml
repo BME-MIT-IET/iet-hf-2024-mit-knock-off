@@ -9,15 +9,17 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-         <maven.compiler.source>14</maven.compiler.source>
-         <maven.compiler.target>14</maven.compiler.target>
+         <maven.compiler.source>13</maven.compiler.source>
+         <maven.compiler.target>13</maven.compiler.target>
     </properties>
 
     <dependencies>
-        <!-- Add dependencies here
         <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.17.0</version>
+            <scope>test</scope>
         </dependency>
-        -->
     </dependencies>
     
     <build>
@@ -27,7 +29,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
                 <configuration>
-                    <release>14</release>
+                    <release>13</release>
                 </configuration>
             </plugin>
         </plugins>
