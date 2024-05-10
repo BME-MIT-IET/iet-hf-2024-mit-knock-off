@@ -1,3 +1,5 @@
+package jatek;
+
 import java.awt.*;
 import java.util.List;
 

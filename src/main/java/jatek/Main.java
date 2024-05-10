@@ -1,3 +1,5 @@
+package jatek;
+
 /**
  * Main osztály, tartalmazza a program belépési pontját.
  */

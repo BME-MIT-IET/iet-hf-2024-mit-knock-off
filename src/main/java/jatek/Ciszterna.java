@@ -1,3 +1,5 @@
+package jatek;
+
 /**
  * A játékban lévő Ciszternákat reprezentáló osztály.
  * Egy Ciszterna egy olyan Csúcs, amelynek mőködése során az összes szomszédos csőből vizet szív be.

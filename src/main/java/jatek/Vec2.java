@@ -1,3 +1,5 @@
+package jatek;
+
 /**
  * 2D vektorokat reprezentáló osztály. Segedmetódusokat tartalmaz a vektorokkal való műveletekhez és a megjelenítéshez
  */

@@ -1,3 +1,5 @@
+package jatek;
+
 /**
  * A játékban lévő Forrásokat reprezentáló osztály.
  * Egy forrás egy olyan Csúcs, amely minden szomszédos csőbe vizet pumpál a működés során.

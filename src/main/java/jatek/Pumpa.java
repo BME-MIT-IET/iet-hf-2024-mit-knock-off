@@ -1,3 +1,5 @@
+package jatek;
+
 /**
  * A játékban lévő pumpákat reprezentáló osztály.
  * Aktív elem, ami a kimeneti csövén vizet továbbít, bemeneti csövén vizet szivattyúz, valamint vizet tárol.
