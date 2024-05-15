@@ -67,6 +67,21 @@ public class StepDefinitions {
         }
     }
 
+    @And("Egy szabotor \\({string}), ami {string}-n all.")
+    public void egySzereloAmiNAll(String szabotorNev, String mezoNev) {
+        Szabotor sz1 = new Szabotor();
+        szabotorok.put(szabotorNev, sz1);
+        Kontroller.getInstance().addJatekos(sz1);
+
+        Mezo mezo = getMezo(mezoNev);
+        if (mezo != null) {
+            sz1.setAktMezo(mezo);
+            mezo.setJatekosRajta(sz1);
+        } else {
+            fail(szabotorNev + " nem tartozkodhat olyan mezon, ami nem letezik!");
+        }
+    }
+
     @And("A {string} cso torott.")
     public void aCsoTorott(String csoNev){
         Cso cso = csovek.get(csoNev);
@@ -78,23 +93,75 @@ public class StepDefinitions {
         }
     }
 
+    @And("{string} szerelo megprobalja megjavitani a mezot amin all")
+    public void szereloMegprobaljaMegjavitaniAMezotAminAll(String szereloNev){
+        Szerelo sz1 = szerelok.get(szereloNev);
+        if(sz1 == null)
+            fail(sz1 +" nem javithat, ha nem letezik!");
+        sz1.mezotJavit();
+    }
+
+    @And("Eltelik egy kor.")
+    public void eltelikEgyKor{
+        Kontroller.stepKor();
+    }
+
+    @And("{string} szerelo megprobal ellepni az {int} mezore")
+    public void szereloMegprobalEllepniAzMezore(String szereloNev, int mezoSorszam) {
+        Szerelo sz1 = szerelok.get(szereloNev);
+        if(sz1 == null)
+            fail(sz1 +" nem mozoghat, ha nem letezik!");
+        sz1.mozgas(mezoSorszam);
+    }
+
+    @And("{string} szabotor megprobal ellepni az {int} mezore")
+    public void szabotorMegprobalEllepniAzMezore(String szabotorNev, int mezoSorszam) {
+        Szabotor sz1 = szabotorok.get(szabotorNev);
+        if(sz1 == null)
+            fail(sz1 +" nem mozoghat, ha nem letezik!");
+        sz1.mozgas(mezoSorszam);
+    }
+
     @When("{string} szerelo megprobal ellepni az {int} mezore")
     public void szereloMegprobalEllepniAzMezore(String szereloNev, int mezoSorszam) {
         Szerelo sz1 = szerelok.get(szereloNev);
+        if(sz1 == null)
+            fail(sz1 +" nem mozoghat, ha nem letezik!");
         sz1.mozgas(mezoSorszam);
     }
 
     @When("{string} szerelo megprobalja megjavitani a mezot amin all")
     public void szereloMegprobaljaMegjavitaniAMezotAminAll(String szereloNev){
         Szerelo sz1 = szerelok.get(szereloNev);
+        if(sz1 == null)
+            fail(sz1 +" nem javithat, ha nem letezik!");
         sz1.mezotJavit();
     }
 
     @When("{string} szerelo megprobalja felvenni a szomszedos csovet")
     public void szereloMegprobaljaFelvenniASzomszedosCsovet(String szereloNev){
         Szerelo sz1 = szerelok.get(szereloNev);
+        if(sz1 == null)
+            fail(sz1 +" nem vehet fel csoveget, ha nem letezik!");
         sz1.csovegFelvetele(0);
     }
+
+    @When("{string} szerelo megprobal felvenni egy pumpat")
+    public void szereloMegprobalFelvenniEgyPumpat(String szereloNev){
+        Szerelo sz1 = szerelok.get(szereloNev);
+        if(sz1 == null)
+            fail(sz1 +" nem vehet fel pumpat, ha nem letezik!");
+        sz1.pumpaFelvetele();
+    }
+
+    @When("{string} szabotor megprobalja elrontani a csovet amin all")
+    public void szabotorMegprobaljaElrontaniACsovetAminAll(String szabotorNev){
+        Szabotor sz1 = szabotorok.get(szabotorNev);
+        if(sz1 == null)
+            fail(sz1 +" nem lyukaszthat, ha nem letezik!");
+        sz1.csoKilyukasztasa();
+    }
+
 
     @Then("{string} mar {string}-en tartozkodik")
     public void marEnTartozkodik(String szereloNev, String mezoNev) {
@@ -107,11 +174,12 @@ public class StepDefinitions {
         assertTrue(mezoJatekos.contains(sz1), mezoNev + "-en nincs " + szereloNev);
     }
 
-    @Then("{string} cso mar nem torott")
-    public void csoMarNemTorott(String csoNev){
+    @Then("{string} cso nem torott")
+    public void csoNemTorott(String csoNev){
         Cso cso = csovek.get(csoNev);
-        assertTrue(cso.getRossz(), csoNev + " meg mindig rossz");
+        assertTrue(cso.getRossz(), csoNev + " torott");
     }
+
 
     @Then("{string} szerelonel van a {string} cso vege")
     public void szerelonelVanACsoVege(String szereloNev, String csoNev){
@@ -119,6 +187,12 @@ public class StepDefinitions {
         Cso cso = csovek.get(csoNev);
 
         assertEquals(sz1.getCsoveg(), cso, szereloNev + " nem " + csoNev + "-et tartja");
-        assertTrue(sz1.getCsoveg() != null, szereloNev + " nem tart csovet ");
+        assertTrue(sz1.getCsoveg() != null, szereloNev + " nem tart csovet");
+    }
+
+    @Then("{string} szerelonel nincsen pumpa")
+    public void szerelonelNincsenPumpa(String szereloNev){
+        Szerelo sz1 = szerelok.get(szereloNev);
+        assertTrue(sz1.getPumpa() == null, szereloNev + "-nel van pumpa");
     }
 }

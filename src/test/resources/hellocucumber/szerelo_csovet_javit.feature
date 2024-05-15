@@ -8,4 +8,4 @@ Feature: A szerelo megjavitja a torott csovet, ami ezutan nem torott
       And A "cs1" cso torott.
       And Egy szerelo ("sz1"), ami "cs1"-n all.
       When "sz1" szerelo megprobalja megjavitani a mezot amin all
-      Then "cs1" cso mar nem torott
+      Then "cs1" cso nem torott
