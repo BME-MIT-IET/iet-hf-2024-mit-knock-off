@@ -9,6 +9,7 @@ public class Szabotor extends Jatekos {
      * A csövet, amin áll csúszóssá teszi.
      * A szerelő az aktMezo-nek meghívja az allapotValtozas() metódusát CSUSZOS paraméterrel.
      */
+    @Override
     public void csuszosit(){
         getAktMezo().allapotValtozas(Allapot.CSUSZOS);
         Kontroller.getInstance().ujraRajzol();

@@ -66,7 +66,7 @@ public class Pumpa extends Csucs{
         int k = cs % getSzomszedosCso().size();
         if(kimenetiCso != k && bemenetiCso != k) {
             Cso temp = getSzomszedosCso().get(k);
-            if (temp.getJatekosRajta().size() == 0) {
+            if (temp.getJatekosRajta().isEmpty()) {
                 if(k<bemenetiCso) bemenetiCso--;
                 if(k<kimenetiCso) kimenetiCso--;
                 lecsatol(temp);
@@ -109,6 +109,7 @@ public class Pumpa extends Csucs{
      * Beállítja a pumpa állapotát.
      * @param r A pumpa állapota.
      */
+    @Override
     public void setRossz(boolean r){
         rossz = r;
     }
@@ -118,6 +119,7 @@ public class Pumpa extends Csucs{
      * @param cso
      * a beállítandó bemeneti cső
      */
+    @Override
     public void setBemenetiCso(Cso cso){
         if(cso == null)
             bemenetiCso = -1;
@@ -128,6 +130,7 @@ public class Pumpa extends Csucs{
      * @param cso
      * a beállítandó kimeneti cső
      */
+    @Override
     public void setKimenetiCso(Cso cso){
         if(cso == null)
             kimenetiCso = -1;

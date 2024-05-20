@@ -85,10 +85,9 @@ public class CsoView {
         Vec2 vonalCsucs2 = vektor1.add(n.multiply(-size));
         Vec2 vonalCsucs3 = vektor2.add(n.multiply(size));
         Vec2 vonalCsucs4 = vektor2.add(n.multiply(-size));
-        int[] x_ek = {(int) vonalCsucs1.getX(), (int) vonalCsucs3.getX(), (int) vonalCsucs4.getX(), (int) vonalCsucs2.getX()};
-        int[] y_ok = {(int) vonalCsucs1.getY(), (int) vonalCsucs3.getY(), (int) vonalCsucs4.getY(), (int) vonalCsucs2.getY()};
-        Polygon polygon = new Polygon(x_ek, y_ok, 4);
-        return polygon;
+        int[] xEk = {(int) vonalCsucs1.getX(), (int) vonalCsucs3.getX(), (int) vonalCsucs4.getX(), (int) vonalCsucs2.getX()};
+        int[] yOk = {(int) vonalCsucs1.getY(), (int) vonalCsucs3.getY(), (int) vonalCsucs4.getY(), (int) vonalCsucs2.getY()};
+        return new Polygon(xEk, yOk, 4);
     }
 
     /**
@@ -119,7 +118,7 @@ public class CsoView {
         List<Csucs> szomszedosCsucsok  =cso.getSzomszedosCsucs();
         CsucsView csucsv1  =null;
         CsucsView csucsv2 = null;
-        if(szomszedosCsucsok.size() !=0)
+        if(!szomszedosCsucsok.isEmpty())
             csucsv1 = GamePanel.getInstance().getCsucsViewFromCsucs(szomszedosCsucsok.get(0));
         if(szomszedosCsucsok.size() ==2)
             csucsv2 = GamePanel.getInstance().getCsucsViewFromCsucs(szomszedosCsucsok.get(1));
