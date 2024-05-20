@@ -19,7 +19,7 @@ public class GameFrame extends JFrame {
     /**
      *  Gombok a játék irányításához
      */
-    private JButton Mozog, Atallit, Lyukaszt, Ragaszt, Javit, CsFelvesz, CsLerak, PFelvesz, PLerak, Csuszosit, JatekVege;
+    private JButton mozog, atallit, lyukaszt, ragaszt, javit, csFelvesz, csLerak, pFelvesz, pLerak, csuszosit, jatekVege;
 
     /**
      *  GameFrame LayoutManagere, hogy váltani lehessen menü és játék között
@@ -47,15 +47,15 @@ public class GameFrame extends JFrame {
         this.setSize(500, 500);
         this.setResizable(false);
         this.setLayout(card);
-        InitComponents();
-        InitMenu();
+        initComponents();
+        initMenu();
         showMenu();
     }
 
     /**
      *  Inicializálja a menüt és a gombját, valamint a hozzá tartozó textfieldeket és labeleket.
      */
-    private void InitMenu(){
+    private void initMenu(){
         menu = new JPanel();
         JButton newGame = new JButton("Játék indítása");
         newGame.addActionListener((ActionEvent e) -> {
@@ -101,91 +101,91 @@ public class GameFrame extends JFrame {
     /**
      *  Létrehozza, inicializálja a gombokat, Labeleket, paneleket, amik a futáshoz kellenek.
      */
-    private void InitComponents(){
+    private void initComponents(){
 
         //kozos
         JLabel kozos = new JLabel("Közös akciók");
-        Mozog = new JButton("Mozog");
+        mozog = new JButton("Mozog");
         JLabel hova_ = new JLabel("Hova:");
         hova = new JTextField("", 2);
-        Atallit = new JButton("Pumpát átállít");
+        atallit = new JButton("Pumpát átállít");
         JLabel ki_ = new JLabel("Ki:");
         ki = new JTextField("", 2);
         JLabel be_ = new JLabel("Be:");
         be = new JTextField("", 2);
-        Lyukaszt = new JButton("Csövet lyukaszt");
-        Ragaszt = new JButton("Csövet ragasztóz");
-        JatekVege = new JButton("Játék vége");
+        lyukaszt = new JButton("Csövet lyukaszt");
+        ragaszt = new JButton("Csövet ragasztóz");
+        jatekVege = new JButton("Játék vége");
 
         //szerelo
         JLabel szerelo = new JLabel("Szerelő akciói");
         szerelo.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-        Javit = new JButton("Mezőt javít");
-        Javit.setAlignmentX(JButton.CENTER_ALIGNMENT);
-        CsFelvesz = new JButton("Csövet felvesz");
-        CsFelvesz.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        javit = new JButton("Mezőt javít");
+        javit.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        csFelvesz = new JButton("Csövet felvesz");
+        csFelvesz.setAlignmentX(JButton.CENTER_ALIGNMENT);
         JLabel hanyadik_ = new JLabel("Hanyadik:");
         hanyadik_.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         hanyadik = new JTextField("", 2);
         hanyadik.setMaximumSize(hanyadik.getPreferredSize());
         hanyadik_.setAlignmentX(JTextField.CENTER_ALIGNMENT);
-        CsLerak = new JButton("Csövet lerak");
-        CsLerak.setAlignmentX(JButton.CENTER_ALIGNMENT);
-        PFelvesz = new JButton("Pumpát felvesz");
-        PFelvesz.setAlignmentX(JButton.CENTER_ALIGNMENT);
-        PLerak = new JButton("Pumpát lerak");
-        PLerak.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        csLerak = new JButton("Csövet lerak");
+        csLerak.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        pFelvesz = new JButton("Pumpát felvesz");
+        pFelvesz.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        pLerak = new JButton("Pumpát lerak");
+        pLerak.setAlignmentX(JButton.CENTER_ALIGNMENT);
 
         //szabotor
         JLabel szabotor = new JLabel("Szabotőr akciói");
         szabotor.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-        Csuszosit = new JButton("Csövet csuszósít");
-        Csuszosit.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        csuszosit = new JButton("Csövet csuszósít");
+        csuszosit.setAlignmentX(JButton.CENTER_ALIGNMENT);
 
         //gombok lenyomásának lekezelése
-        AddLambdas();
+        addLambdas();
 
         //egy fő panel ami tartalmazza a játékhoz szükséges paneleket, így lehet váltani közte es a menu között
         JPanel mainPanel = new JPanel(new BorderLayout());
         //Felso panel (kozos gombok)
         JPanel pan = new JPanel();
         pan.add(kozos);
-        pan.add(Mozog);
+        pan.add(mozog);
         pan.add(hova_);
         pan.add(hova);
-        pan.add(Atallit);
+        pan.add(atallit);
         pan.add(ki_);
         pan.add(ki);
         pan.add(be_);
         pan.add(be);
-        pan.add(Lyukaszt);
-        pan.add(Ragaszt);
-        pan.add(JatekVege);
+        pan.add(lyukaszt);
+        pan.add(ragaszt);
+        pan.add(jatekVege);
 
 
         //left panel (szerelo akciok)
-        JPanel left_panel = new JPanel();
-        left_panel.setLayout(new BoxLayout(left_panel, BoxLayout.Y_AXIS));
-        left_panel.add(szerelo);
-        left_panel.add(Javit);
-        left_panel.add(Box.createVerticalStrut(15));
-        left_panel.add(CsFelvesz);
-        left_panel.add(hanyadik_);
-        left_panel.add(hanyadik);
-        left_panel.add(Box.createVerticalStrut(15));
-        left_panel.add(CsLerak);
-        left_panel.add(Box.createVerticalStrut(15));
-        left_panel.add(PFelvesz);
-        left_panel.add(Box.createVerticalStrut(15));
-        left_panel.add(PLerak);
-        mainPanel.add(left_panel, BorderLayout.WEST);
+        JPanel leftPanel = new JPanel();
+        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+        leftPanel.add(szerelo);
+        leftPanel.add(javit);
+        leftPanel.add(Box.createVerticalStrut(15));
+        leftPanel.add(csFelvesz);
+        leftPanel.add(hanyadik_);
+        leftPanel.add(hanyadik);
+        leftPanel.add(Box.createVerticalStrut(15));
+        leftPanel.add(csLerak);
+        leftPanel.add(Box.createVerticalStrut(15));
+        leftPanel.add(pFelvesz);
+        leftPanel.add(Box.createVerticalStrut(15));
+        leftPanel.add(pLerak);
+        mainPanel.add(leftPanel, BorderLayout.WEST);
 
         //right panel (szabotor akciok)
-        JPanel right_panel = new JPanel();
-        right_panel.setLayout(new BoxLayout(right_panel, BoxLayout.Y_AXIS));
-        right_panel.add(szabotor);
-        right_panel.add(Csuszosit);
-        mainPanel.add(right_panel, BorderLayout.EAST);
+        JPanel rightPanel = new JPanel();
+        rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+        rightPanel.add(szabotor);
+        rightPanel.add(csuszosit);
+        mainPanel.add(rightPanel, BorderLayout.EAST);
 
         //North are buttons
         mainPanel.add(pan, BorderLayout.NORTH);
@@ -215,24 +215,28 @@ public class GameFrame extends JFrame {
     /**
      *  Minden gombhoz hozzárendel egy actionListenert
      */
-    public void AddLambdas() {
-        addActionListenerToButton(Mozog, hova, (jatekos, value) -> {
+    public void addLambdas() {
+        addActionListenerToButton(mozog, hova, (jatekos, value) -> {
             if(!value.isEmpty())
                 try {
                     jatekos.mozgas(Integer.parseInt(value) - 1);
                 }
-                catch (NumberFormatException e){}
+                catch (NumberFormatException e){
+                    jatekos.mozgas(0);
+                }
             else
                 jatekos.mozgas(0);
             hova.setText("");
         });
-        Atallit.addActionListener((ActionEvent e) -> {
+        atallit.addActionListener((ActionEvent e) -> {
                     int akt = Kontroller.getInstance().getAktualisJatekos();
                     List<Jatekos> jatekosok = Kontroller.getInstance().getJatekosok();
                     try {
                         jatekosok.get(akt).pumpaAtallitasa(Integer.parseInt(be.getText()) - 1, Integer.parseInt(ki.getText()) - 1);
                     }
-                    catch (NumberFormatException f){}
+                    catch (NumberFormatException f){
+                        jatekosok.get(akt).pumpaAtallitasa(0, 0);
+                    }
                     Kontroller.getInstance().stepKor();
                     if(akt == jatekosok.size()-1){
                         Kontroller.getInstance().stepTime();
@@ -241,40 +245,34 @@ public class GameFrame extends JFrame {
                     be.setText("");
                     ki.setText("");
                 });
-        addActionListenerToButton(Lyukaszt, null, (jatekos, value) -> {
-            jatekos.csoKilyukasztasa();
-        });
-        addActionListenerToButton(Ragaszt, null, (jatekos, value) -> {
-            jatekos.beragasztoz();
-        });
-        addActionListenerToButton(Javit, null, (jatekos, value) -> {
-            jatekos.mezotJavit();
-        });
-        addActionListenerToButton(CsFelvesz, hanyadik, (jatekos, value) -> {
+        addActionListenerToButton(lyukaszt, null, (jatekos, value) ->
+            jatekos.csoKilyukasztasa());
+        addActionListenerToButton(ragaszt, null, (jatekos, value) -> 
+            jatekos.beragasztoz());
+        addActionListenerToButton(javit, null, (jatekos, value) -> 
+            jatekos.mezotJavit());
+        addActionListenerToButton(csFelvesz, hanyadik, (jatekos, value) -> {
             if(!value.isEmpty())
                 try {
                     jatekos.csovegFelvetele(Integer.parseInt(value)-1);
                 }
-                catch (NumberFormatException g){}
+                catch (NumberFormatException g){
+                    jatekos.csovegFelvetele(0);
+                }
             else
                 jatekos.csovegFelvetele(0);
             hanyadik.setText("");
         });
-        addActionListenerToButton(CsLerak, null, (jatekos, value) -> {
-            jatekos.csovegetLerak();
-        });
-        addActionListenerToButton(PFelvesz, null, (jatekos, value) -> {
-            jatekos.pumpaFelvetele();
-        });
-        addActionListenerToButton(PLerak, null, (jatekos, value) -> {
-            jatekos.pumpatLerak();
-        });
-        addActionListenerToButton(Csuszosit, null, (jatekos, value) -> {
-            jatekos.csuszosit();
-        });
-        addActionListenerToButton(JatekVege, null, (jatekos, value) -> {
-            System.exit(0);
-        });
+        addActionListenerToButton(csLerak, null, (jatekos, value) -> 
+            jatekos.csovegetLerak());
+        addActionListenerToButton(pFelvesz, null, (jatekos, value) -> 
+            jatekos.pumpaFelvetele());
+        addActionListenerToButton(pLerak, null, (jatekos, value) -> 
+            jatekos.pumpatLerak());
+        addActionListenerToButton(csuszosit, null, (jatekos, value) -> 
+            jatekos.csuszosit());
+        addActionListenerToButton(jatekVege, null, (jatekos, value) -> 
+            System.exit(0));
     }
 
     /**

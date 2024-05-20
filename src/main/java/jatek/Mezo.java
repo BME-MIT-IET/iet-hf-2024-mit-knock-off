@@ -108,20 +108,32 @@ public abstract class Mezo {
 	 */
 	public void allapotValtozas(Allapot allapot){}
 
-	//TODO komment
+	/**
+	 * Rarakja a jatekost
+	 * @param j A jatekos
+	 */
 	public void setJatekosRajta(Jatekos j){
 		jatekosRajta.add(j);
 	}
 
+	/*
+	 * Visszaadja rajtalevo jatekosok listajat
+	 */
 	public List<Jatekos> getJatekosRajta(){
 		return jatekosRajta;
 	}
 
+	/*
+	 * visszaadja hogy van e rajta viz
+	 */
 	public boolean getVanViz(){
 		return vanViz;
 	}
-	public void setDet(Csucs csucs){
 
+	/*
+	 * ballitja, hogy determinisztikusan mukodjon-e (nem csinal semmit csak nehany leszarmazottban)
+	 */
+	public void setDet(Csucs csucs){
 	}
 
 }

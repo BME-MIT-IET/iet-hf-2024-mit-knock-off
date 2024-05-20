@@ -51,6 +51,7 @@ public class Szerelo extends Jatekos{
      * Megjavítja azt a mezőt, amin a szerelő éppen áll.
      * A játékos meghívja az aktMezo-re a szereloJavit() függvényét, ami megjavítja az aktMezo-t.
      */
+    @Override
     public void mezotJavit(){
         getAktMezo().szereloJavit();
         Kontroller.getInstance().ujraRajzol();
@@ -64,6 +65,7 @@ public class Szerelo extends Jatekos{
      * visszatérési értékét beállítja a csoveg attribútum értékének.
      * @param cs cső indexe
      */
+    @Override
     public void csovegFelvetele(int cs){
         if(getCsoveg()==null && getPumpa()==null) {
             Cso kapottCso = getAktMezo().adjCsovet(cs);
@@ -77,10 +79,10 @@ public class Szerelo extends Jatekos{
      * Amennyiben a szerelőnél van csővég (a csoveg attribútum értéke nem null), akkor azt a
      * szerelő az aktMezo-re rakja úgy, hogy meghívja az aktMezo targylerakas() metodusát a csoveg paraméterrel.
      */
+    @Override
     public void csovegetLerak(){
-        if(getCsoveg()!=null){
-            if(getAktMezo().targyLerakas(csoveg))
-                setCsoveg(null);
+        if(getCsoveg()!=null && getAktMezo().targyLerakas(csoveg)){
+            setCsoveg(null);
         }
         Kontroller.getInstance().ujraRajzol();
     }
@@ -91,6 +93,7 @@ public class Szerelo extends Jatekos{
      * akkor a szerelő az aktMezo-nek meghívja a pumpaLetrehozasa() metódusát, melynek a visszatérési
      * értékét beállítja a pumpa attribútum értékének.
      */
+    @Override
     public void pumpaFelvetele(){
         if(getCsoveg()==null && getPumpa()==null){
             Pumpa kapottPumpa= getAktMezo().pumpaLetrehozasa();
@@ -104,10 +107,10 @@ public class Szerelo extends Jatekos{
      * Amennyiben a szerelőnél van pumpa (a pumpa attribútum értéke nem null), akkor azt a szerelő
      * az aktMezo-re rakja úgy, hogy meghívja az aktMezo targylerakas() metodusát a pumpa paraméterrel.
      */
+    @Override
     public void pumpatLerak(){
-        if(getPumpa()!=null){
-            if(getAktMezo().targyLerakas(pumpa))
-                setPumpa(null);
+        if(getPumpa()!=null && getAktMezo().targyLerakas(pumpa)){
+            setPumpa(null);
         }
         Kontroller.getInstance().ujraRajzol();
     }
