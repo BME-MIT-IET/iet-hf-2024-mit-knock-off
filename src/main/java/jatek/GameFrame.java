@@ -14,12 +14,25 @@ public class GameFrame extends JFrame {
     /**
      * TextFieldek, amikbe a felhasználó paramétereket adhat meg egy gomblenyomáshoz.
      */
-    private JTextField hova, ki, be, hanyadik;
+    private JTextField hova;
+    private JTextField ki;
+    private JTextField be;
+    private JTextField hanyadik;
 
     /**
      *  Gombok a játék irányításához
      */
-    private JButton mozog, atallit, lyukaszt, ragaszt, javit, csFelvesz, csLerak, pFelvesz, pLerak, csuszosit, jatekVege;
+    private JButton mozog;
+    private JButton atallit;
+    private JButton lyukaszt;
+    private JButton ragaszt;
+    private JButton javit;
+    private JButton csFelvesz;
+    private JButton csLerak;
+    private JButton pFelvesz;
+    private JButton pLerak;
+    private JButton csuszosit;
+    private JButton jatekVege;
 
     /**
      *  GameFrame LayoutManagere, hogy váltani lehessen menü és játék között
@@ -29,12 +42,11 @@ public class GameFrame extends JFrame {
     /**
      *  Menühöz tartozó textFieldek, a szerelő és szabotőrszám megadására
      */
-    private JTextField szereloszam, szabotorszam;
+    private JTextField szereloszam;
+    private JTextField szabotorszam;
 
-    /**
-     * Menühöz tartozó JPanel
-     */
-    private JPanel menu;
+    
+    
 
     /**
      * GameFrame konstruktora, meghívja az inicializáló függvényeket és megjeleníti a menüt.
@@ -43,7 +55,7 @@ public class GameFrame extends JFrame {
     public GameFrame() {
         super("CsipCsap Jateka woooohoo");
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(500, 500);
         this.setResizable(false);
         this.setLayout(card);
@@ -56,6 +68,10 @@ public class GameFrame extends JFrame {
      *  Inicializálja a menüt és a gombját, valamint a hozzá tartozó textfieldeket és labeleket.
      */
     private void initMenu(){
+        /**
+        * Menühöz tartozó JPanel
+        */
+        JPanel menu;
         menu = new JPanel();
         JButton newGame = new JButton("Játék indítása");
         newGame.addActionListener((ActionEvent e) -> {
@@ -106,12 +122,12 @@ public class GameFrame extends JFrame {
         //kozos
         JLabel kozos = new JLabel("Közös akciók");
         mozog = new JButton("Mozog");
-        JLabel hova_ = new JLabel("Hova:");
+        JLabel hovaLabel = new JLabel("Hova:");
         hova = new JTextField("", 2);
         atallit = new JButton("Pumpát átállít");
-        JLabel ki_ = new JLabel("Ki:");
+        JLabel kiLabel = new JLabel("Ki:");
         ki = new JTextField("", 2);
-        JLabel be_ = new JLabel("Be:");
+        JLabel beLabel = new JLabel("Be:");
         be = new JTextField("", 2);
         lyukaszt = new JButton("Csövet lyukaszt");
         ragaszt = new JButton("Csövet ragasztóz");
@@ -119,28 +135,28 @@ public class GameFrame extends JFrame {
 
         //szerelo
         JLabel szerelo = new JLabel("Szerelő akciói");
-        szerelo.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+        szerelo.setAlignmentX(Component.CENTER_ALIGNMENT);
         javit = new JButton("Mezőt javít");
-        javit.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        javit.setAlignmentX(Component.CENTER_ALIGNMENT);
         csFelvesz = new JButton("Csövet felvesz");
-        csFelvesz.setAlignmentX(JButton.CENTER_ALIGNMENT);
-        JLabel hanyadik_ = new JLabel("Hanyadik:");
-        hanyadik_.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+        csFelvesz.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel hanyadikLabel = new JLabel("Hanyadik:");
+        hanyadikLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         hanyadik = new JTextField("", 2);
         hanyadik.setMaximumSize(hanyadik.getPreferredSize());
-        hanyadik_.setAlignmentX(JTextField.CENTER_ALIGNMENT);
+        hanyadikLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         csLerak = new JButton("Csövet lerak");
-        csLerak.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        csLerak.setAlignmentX(Component.CENTER_ALIGNMENT);
         pFelvesz = new JButton("Pumpát felvesz");
-        pFelvesz.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        pFelvesz.setAlignmentX(Component.CENTER_ALIGNMENT);
         pLerak = new JButton("Pumpát lerak");
-        pLerak.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        pLerak.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         //szabotor
         JLabel szabotor = new JLabel("Szabotőr akciói");
-        szabotor.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+        szabotor.setAlignmentX(Component.CENTER_ALIGNMENT);
         csuszosit = new JButton("Csövet csuszósít");
-        csuszosit.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        csuszosit.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         //gombok lenyomásának lekezelése
         addLambdas();
@@ -151,12 +167,12 @@ public class GameFrame extends JFrame {
         JPanel pan = new JPanel();
         pan.add(kozos);
         pan.add(mozog);
-        pan.add(hova_);
+        pan.add(hovaLabel);
         pan.add(hova);
         pan.add(atallit);
-        pan.add(ki_);
+        pan.add(kiLabel);
         pan.add(ki);
-        pan.add(be_);
+        pan.add(beLabel);
         pan.add(be);
         pan.add(lyukaszt);
         pan.add(ragaszt);
@@ -170,7 +186,7 @@ public class GameFrame extends JFrame {
         leftPanel.add(javit);
         leftPanel.add(Box.createVerticalStrut(15));
         leftPanel.add(csFelvesz);
-        leftPanel.add(hanyadik_);
+        leftPanel.add(hanyadikLabel);
         leftPanel.add(hanyadik);
         leftPanel.add(Box.createVerticalStrut(15));
         leftPanel.add(csLerak);
@@ -211,13 +227,14 @@ public class GameFrame extends JFrame {
         card.show(getContentPane(), "game");
     }
 
-
     /**
-     *  Minden gombhoz hozzárendel egy actionListenert
+     * Megadja a mozog gomb lenyomására történő eseményeket.
+     * @param jatekos
+     * @param value
      */
-    public void addLambdas() {
-        addActionListenerToButton(mozog, hova, (jatekos, value) -> {
-            if(!value.isEmpty())
+
+    private void mozgasAction(Jatekos jatekos, String value){
+        if(!value.isEmpty())
                 try {
                     jatekos.mozgas(Integer.parseInt(value) - 1);
                 }
@@ -227,7 +244,12 @@ public class GameFrame extends JFrame {
             else
                 jatekos.mozgas(0);
             hova.setText("");
-        });
+    }
+    /**
+     *  Minden gombhoz hozzárendel egy actionListenert
+     */
+    public void addLambdas() {
+        addActionListenerToButton(mozog, hova, this::mozgasAction);
         atallit.addActionListener((ActionEvent e) -> {
                     int akt = Kontroller.getInstance().getAktualisJatekos();
                     List<Jatekos> jatekosok = Kontroller.getInstance().getJatekosok();

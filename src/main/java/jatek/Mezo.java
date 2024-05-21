@@ -21,8 +21,8 @@ public abstract class Mezo {
 	/**
 	 * Létrehoz egy mezőt, és inicializálja a jatekosRajta listát.
 	 */
-	public Mezo(){
-		jatekosRajta = new ArrayList<Jatekos>();
+	protected Mezo(){
+		jatekosRajta = new ArrayList<>();
 	}
 
 	/**

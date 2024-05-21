@@ -48,12 +48,12 @@ public class ForrasView extends CsucsView{
         for (int i=0; i<szomszedoscsovek.size(); i++) {
             if (!szomszedoscsovek.subList(0, i).contains(szomszedoscsovek.get(i))) {
                 CsoView cv = GamePanel.getInstance().getCsoViewFromCso(szomszedoscsovek.get(i));
-                Vec2 direction = new Vec2(cv.getX1() - getX(), cv.getY1() - getY());
+                Vec2 direction = new Vec2(cv.getX1() - ((double)getX()), cv.getY1() - ((double)getY()));
                 if (cv.getX1() == getX() && cv.getY1() == getY()) {
-                    direction = new Vec2(cv.getX2() - getX(), cv.getY2() - getY());
+                    direction = new Vec2(cv.getX2() - ((double)getX()), cv.getY2() - ((double)getY()));
                 }
                 direction = direction.normalize();
-                direction = direction.multiply(radius - 5);
+                direction = direction.multiply(radius - 5.0);
                 g.drawString(Integer.toString(i + 1), (int) (getX() + direction.getX() - 5), (int) (getY() + direction.getY() + 5));
             }
         }

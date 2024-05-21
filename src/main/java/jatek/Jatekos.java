@@ -113,11 +113,11 @@ public abstract class Jatekos {
         Kontroller.getInstance().ujraRajzol();
     }
 
-    public void csuszosit(){};
-    public void mezotJavit(){};
-    public void csovegFelvetele(int cs){};
-    public void csovegetLerak(){};
-    public void pumpaFelvetele(){};
-    public void pumpatLerak(){};
-    public Cso getCso(){return null;};
+    public void csuszosit(){}
+    public void mezotJavit(){}
+    public void csovegFelvetele(int cs){}
+    public void csovegetLerak(){}
+    public void pumpaFelvetele(){}
+    public void pumpatLerak(){}
+    public Cso getCso(){return null;}
 }

@@ -15,9 +15,9 @@ public abstract class Csucs extends Mezo{
     /**
      * Létrehoz egy Csucsot, és inicializálja a szomszedosCso listát.
      */
-    public Csucs(){
+    protected Csucs(){
         super();
-        szomszedosCso = new ArrayList<Cso>();
+        szomszedosCso = new ArrayList<>();
     }
 
     /**
@@ -153,7 +153,7 @@ public abstract class Csucs extends Mezo{
      */
     @Override
     public List<? extends Mezo> getNeighbours(){
-        return szomszedosCso;
+        return getSzomszedosCso();
     }
 
     /**

@@ -45,7 +45,7 @@ public class GamePanel extends JPanel {
     /**
      * A pontokat szemléltető címke: "szabotőrok pontja - szerelők pontja" formátumban
      */
-    JLabel score_;
+    JLabel score;
 
     /**
      * Default Konstruktora a Game Panelnek.
@@ -55,9 +55,9 @@ public class GamePanel extends JPanel {
         jatekosok = new ArrayList<>();
         csovek = new ArrayList<>();
         csucsok = new ArrayList<>();
-        score_ = new JLabel("Score: "+Kontroller.getInstance().getSzabotorPontok()+"-"+Kontroller.getInstance().getSzereloPontok());
-        score_.setAlignmentY(JLabel.BOTTOM_ALIGNMENT);
-        this.add(score_);
+        score = new JLabel("Score: "+Kontroller.getInstance().getSzabotorPontok()+"-"+Kontroller.getInstance().getSzereloPontok());
+        score.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+        this.add(score);
     }
 
     /**
@@ -77,7 +77,7 @@ public class GamePanel extends JPanel {
         for (JatekosView j : jatekosok){
             j.draw(g);
         }
-        score_.setText("Score: "+Kontroller.getInstance().getSzabotorPontok()+"-"+Kontroller.getInstance().getSzereloPontok());
+        score.setText("Score: "+Kontroller.getInstance().getSzabotorPontok()+"-"+Kontroller.getInstance().getSzereloPontok());
     }
 
     /**
@@ -145,13 +145,13 @@ public class GamePanel extends JPanel {
      * @return A csövet cipelő játékosok listája.
      */
     public List<JatekosView> getPlayerViewFromCso(Cso c){
-        List<JatekosView> jatekosok = new ArrayList<>();
+        List<JatekosView> cipeloJatekosok = new ArrayList<>();
         for (JatekosView jv : this.jatekosok){
             if (jv.getJatekos().getCso() == c){
-                jatekosok.add(jv);
+                cipeloJatekosok.add(jv);
             }
         }
-        return jatekosok;
+        return cipeloJatekosok;
     }
 
     /**
