@@ -285,10 +285,13 @@ public  class Kontroller {
      * @param csapat a csapat neve, lehet "szerelok" vagy "szabotorok".
      */
     public void pontNovel(String csapat){
-        switch (csapat) {
-            case "szerelok" -> szereloPontok++;
-            case "szabotorok" -> szabotorPontok++;
+        if (csapat.equals("szerelok")) {
+             szereloPontok++;
         }
+        else{
+            szabotorPontok++;
+        }
+        
         Kontroller.getInstance().ujraRajzol();
     }
 

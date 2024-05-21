@@ -109,7 +109,7 @@ public class Cso extends Mezo {
      */
     @Override
     public List<? extends Mezo> getNeighbours() {
-        return szomszedosCsucs;
+        return getSzomszedosCsucs();
     }
 
     /**

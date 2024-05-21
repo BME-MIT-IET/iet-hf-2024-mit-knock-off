@@ -33,7 +33,7 @@ public class SzereloView extends JatekosView{
         if(aktJatekos == szerelo){
             //ha a szerelőnél van tárgy, akkor kiírja a képernyő aljára, ha nincs nála semmi, nem ír ki semmit
             if(szerelo.getCsoveg()!=null || szerelo.getPumpa()!=null){
-                String itemString = new String("Item: ");
+                String itemString = "Item: ";
                 if(szerelo.getCsoveg()!=null){
                     itemString+="Csővég";
                 }
