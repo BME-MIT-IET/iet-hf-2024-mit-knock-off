@@ -98,7 +98,14 @@ public class StepDefinitions {
         Kontroller.getInstance().stepKor();
     }
 
-    @And("{string} szerelo megprobalja megjavitani a mezot amin all")
+    @And("{string} szerelo megjavitja a mezot amin all")
+    public void szereloMegjavitjaAMezotAminAll(String szereloNev){
+        Szerelo sz1 = szerelok.get(szereloNev);
+        if(sz1 == null)
+            fail(sz1 +" nem javithat, ha nem letezik!");
+        sz1.mezotJavit();
+    }
+
     @When("{string} szerelo megprobalja megjavitani a mezot amin all")
     public void szereloMegprobaljaMegjavitaniAMezotAminAll(String szereloNev){
         Szerelo sz1 = szerelok.get(szereloNev);
