@@ -133,12 +133,19 @@ public class StepDefinitions {
         sz1.mozgas(mezoSorszam);
     }
 
-    @And("{string} szabotor megprobal ellepni az {int} mezore")
-    public void szabotorMegprobalEllepniAzMezore(String szabotorNev, int mezoSorszam) {
+    @And("{string} szabotor ellep az {int} mezore")
+    public void szabotorEllepAzMezore(String szabotorNev, int mezoSorszam) {
         Szabotor sz1 = szabotorok.get(szabotorNev);
         if(sz1 == null)
             fail(sz1 +" nem mozoghat, ha nem letezik!");
         sz1.mozgas(mezoSorszam);
+    }
+
+    @When("{string} szabotor megprobal ellepni az {int} mezore")
+    public void szabotor_megprobal_ellepni_az_mezore(String szereloNev, Integer int1) {
+        // Write code here that turns the phrase above into concrete actions
+        Szerelo sz1 = szerelok.get(szereloNev);
+        sz1.mozgas(int1);
     }
 
 
@@ -241,12 +248,7 @@ public class StepDefinitions {
         }
     }
 
-    @When("{string} szabotor megprobal ellepni az {int} mezore")
-    public void szabotor_megprobal_ellepni_az_mezore(String szereloNev, Integer int1) {
-        // Write code here that turns the phrase above into concrete actions
-        Szerelo sz1 = szerelok.get(szereloNev);
-        sz1.mozgas(int1);
-    }
+  
 
 
 
