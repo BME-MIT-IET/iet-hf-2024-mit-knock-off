@@ -52,6 +52,46 @@ public class StepDefinitions {
         f1.addCso(cs1);
     }
 
+    @Given("Egy tábla egy pumpaval \\({string}) egy forrassal \\({string}), koztuk harom csovel \\({string}), \\({string}), \\({string}).")
+    public void egyTáblaEgyPumpavalEgyForrassalKoztukHaromCsovel(String pumpaNev, String forrasNev, String csoNev1, String csoNev2, String csoNev3) {
+        List<Csucs> csucsok = Kontroller.getInstance().getCsucsok();
+        List<Cso> kontrollerCsovek = Kontroller.getInstance().getCsovek();
+
+        Pumpa p1 = new Pumpa();
+        pumpak.put(pumpaNev, p1);
+        csucsok.add(p1);
+
+        Forras f1 = new Forras();
+        forrasok.put(forrasNev, f1);
+        csucsok.add(f1);
+
+        Cso cs1 = new Cso();
+        csovek.put(csoNev1, cs1);
+        kontrollerCsovek.add(cs1);
+
+        Cso cs2 = new Cso();
+        csovek.put(csoNev2, cs2);
+        kontrollerCsovek.add(cs2);
+
+        Cso cs3 = new Cso();
+        csovek.put(csoNev3, cs3);
+        kontrollerCsovek.add(cs3);
+
+
+        cs1.addCsucs(p1);
+        cs1.addCsucs(f1);
+        cs2.addCsucs(p1);
+        cs2.addCsucs(f1);
+        cs3.addCsucs(p1);
+        cs3.addCsucs(f1);
+        p1.addCso(cs1);
+        f1.addCso(cs1);
+        p1.addCso(cs2);
+        f1.addCso(cs2);
+        p1.addCso(cs3);
+        f1.addCso(cs3);
+    }
+
     @And("Egy szerelo \\({string}), ami {string}-n all.")
     public void egySzereloAmiNAll(String szereloNev, String mezoNev) {
         Szerelo sz1 = new Szerelo();
@@ -156,7 +196,7 @@ public class StepDefinitions {
         Szerelo sz1 = szerelok.get(szereloNev);
         if(sz1 == null)
             fail(sz1 +" nem vehet fel csoveget, ha nem letezik!");
-        sz1.csovegFelvetele(0);
+        sz1.csovegFelvetele(2);
     }
 
     @When("{string} szerelo megprobal felvenni egy pumpat")
@@ -198,7 +238,9 @@ public class StepDefinitions {
     @Then("{string} szerelonel van a {string} cso vege")
     public void szerelonelVanACsoVege(String szereloNev, String csoNev){
         Szerelo sz1 = szerelok.get(szereloNev);
+        Cso cso = csovek.get(csoNev);
 
+        assertEquals(sz1.getCsoveg(), cso, szereloNev + " nem " + csoNev + "-et tartja");
         assertNotNull(sz1.getCsoveg(), szereloNev + " nem tart csovet");
     }
 
