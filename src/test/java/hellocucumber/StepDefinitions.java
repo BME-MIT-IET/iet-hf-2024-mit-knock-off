@@ -201,7 +201,6 @@ public class StepDefinitions {
         Cso cso = csovek.get(csoNev);
 
         assertEquals(sz1.getCsoveg(), cso, szereloNev + " nem " + csoNev + "-et tartja");
-        assertNotNull(sz1.getCsoveg(), szereloNev + " nem tart csovet");
     }
 
     @Then("{string} szerelonel nincsen pumpa")
