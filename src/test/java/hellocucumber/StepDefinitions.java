@@ -26,7 +26,7 @@ public class StepDefinitions {
         } else if (forrasok.containsKey(mezoNev)) {
             return forrasok.get(mezoNev);
         } else return ciszternak.getOrDefault(mezoNev, null);
-    
+    }
 
 
     @Given("Egy tábla egy pumpaval \\({string}) egy forrassal \\({string}), koztuk egy csovel \\({string}).")
@@ -68,7 +68,7 @@ public class StepDefinitions {
     }
 
     @And("Egy szabotor \\({string}), ami {string}-n all.")
-    public void egySzereloAmiNAll(String szabotorNev, String mezoNev) {
+    public void egySzabotorAmiNAll(String szabotorNev, String mezoNev) {
         Szabotor sz1 = new Szabotor();
         szabotorok.put(szabotorNev, sz1);
         Kontroller.getInstance().addJatekos(sz1);
@@ -93,7 +93,13 @@ public class StepDefinitions {
         }
     }
 
+    @And("Eltelik egy kor.")
+    public void eltelikEgyKor(){
+        Kontroller.getInstance().stepKor();
+    }
+
     @And("{string} szerelo megprobalja megjavitani a mezot amin all")
+    @When("{string} szerelo megprobalja megjavitani a mezot amin all")
     public void szereloMegprobaljaMegjavitaniAMezotAminAll(String szereloNev){
         Szerelo sz1 = szerelok.get(szereloNev);
         if(sz1 == null)
@@ -101,12 +107,10 @@ public class StepDefinitions {
         sz1.mezotJavit();
     }
 
-    @And("Eltelik egy kor.")
-    public void eltelikEgyKor{
-        Kontroller.stepKor();
-    }
+    
 
     @And("{string} szerelo megprobal ellepni az {int} mezore")
+    @When("{string} szerelo megprobal ellepni az {int} mezore")
     public void szereloMegprobalEllepniAzMezore(String szereloNev, int mezoSorszam) {
         Szerelo sz1 = szerelok.get(szereloNev);
         if(sz1 == null)
@@ -122,21 +126,8 @@ public class StepDefinitions {
         sz1.mozgas(mezoSorszam);
     }
 
-    @When("{string} szerelo megprobal ellepni az {int} mezore")
-    public void szereloMegprobalEllepniAzMezore(String szereloNev, int mezoSorszam) {
-        Szerelo sz1 = szerelok.get(szereloNev);
-        if(sz1 == null)
-            fail(sz1 +" nem mozoghat, ha nem letezik!");
-        sz1.mozgas(mezoSorszam);
-    }
 
-    @When("{string} szerelo megprobalja megjavitani a mezot amin all")
-    public void szereloMegprobaljaMegjavitaniAMezotAminAll(String szereloNev){
-        Szerelo sz1 = szerelok.get(szereloNev);
-        if(sz1 == null)
-            fail(sz1 +" nem javithat, ha nem letezik!");
-        sz1.mezotJavit();
-    }
+    
 
     @When("{string} szerelo megprobalja felvenni a szomszedos csovet")
     public void szereloMegprobaljaFelvenniASzomszedosCsovet(String szereloNev){
@@ -195,6 +186,7 @@ public class StepDefinitions {
     public void szerelonelNincsenPumpa(String szereloNev){
         Szerelo sz1 = szerelok.get(szereloNev);
         assertTrue(sz1.getPumpa() == null, szereloNev + "-nel van pumpa");
+    }
 
     @Given("Egy tábla egy forassal \\({string}), hozza csatolva egy csovel \\({string}).")
     public void egy_tábla_egy_forassal_hozza_csatolva_egy_csovel(String forrasNev, String csoNev) {
