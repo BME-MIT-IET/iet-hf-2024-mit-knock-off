@@ -116,7 +116,15 @@ public class StepDefinitions {
 
     
 
-    @And("{string} szerelo megprobal ellepni az {int} mezore")
+    @And("{string} szerelo ellep az {int} mezore")
+    public void szereloEllepAzMezore(String szereloNev, int mezoSorszam) {
+        Szerelo sz1 = szerelok.get(szereloNev);
+        if(sz1 == null)
+            fail(sz1 +" nem mozoghat, ha nem letezik!");
+        sz1.mozgas(mezoSorszam);
+    }
+
+
     @When("{string} szerelo megprobal ellepni az {int} mezore")
     public void szereloMegprobalEllepniAzMezore(String szereloNev, int mezoSorszam) {
         Szerelo sz1 = szerelok.get(szereloNev);

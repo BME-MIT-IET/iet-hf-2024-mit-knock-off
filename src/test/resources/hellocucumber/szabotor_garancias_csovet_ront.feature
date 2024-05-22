@@ -10,7 +10,7 @@ Feature: A szabotor nem tudja elrontani a csovet, mert foltozasi garancia van ra
       And A "cs1" cso torott.
       And "sz1" szerelo megjavitja a mezot amin all
       And Eltelik egy kor.
-      And "sz1" szerelo megprobal ellepni az 1 mezore
+      And "sz1" szerelo ellep az 1 mezore
       And "sz2" szabotor megprobal ellepni az 0 mezore
       And Eltelik egy kor.
       When "sz2" szabotor megprobalja elrontani a csovet amin all
