@@ -191,7 +191,7 @@ public class StepDefinitions {
     @Then("{string} cso nem torott")
     public void csoNemTorott(String csoNev){
         Cso cso = csovek.get(csoNev);
-        assertTrue(cso.getRossz(), csoNev + " torott");
+        assertFalse(cso.getRossz(), csoNev + " torott");
     }
 
 
@@ -201,13 +201,13 @@ public class StepDefinitions {
         Cso cso = csovek.get(csoNev);
 
         assertEquals(sz1.getCsoveg(), cso, szereloNev + " nem " + csoNev + "-et tartja");
-        assertTrue(sz1.getCsoveg() != null, szereloNev + " nem tart csovet");
+        assertNotNull(sz1.getCsoveg(), szereloNev + " nem tart csovet");
     }
 
     @Then("{string} szerelonel nincsen pumpa")
     public void szerelonelNincsenPumpa(String szereloNev){
         Szerelo sz1 = szerelok.get(szereloNev);
-        assertTrue(sz1.getPumpa() == null, szereloNev + "-nel van pumpa");
+        assertNull(sz1.getPumpa(), szereloNev + "-nel van pumpa");
     }
 
     @Given("Egy tábla egy forassal \\({string}), hozza csatolva egy csovel \\({string}).")
