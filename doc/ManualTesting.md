@@ -1,7 +1,7 @@
 # Manuális Tesztelés
 
 ## Elvégzett munka
-Első lépésben megvizsgátuk, hogy milyen létező módszereket/sablonokat használnak manuális tesztelésre. Ezek alapján elkészítettünk egy flexibilis és átlátható teszt sablont, ami a jelenlegi projektünkhöz jól illett.
+Első lépésben megvizsgáltuk, hogy milyen létező módszereket/sablonokat használnak manuális tesztelésre. Ezek alapján elkészítettünk egy flexibilis és átlátható teszt sablont, ami a jelenlegi projektünkhöz jól illett.
 A sablon kinézete alább látható: 
 ![test_template.png](test_template.png)
 
