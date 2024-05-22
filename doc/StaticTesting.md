@@ -3,7 +3,7 @@
 ## Elvégzett munka
 
 A projektünket kiegészítettük a Sonar analízis család eszközeivel, ezzel megvalósítottuk az automatikus statikus tesztelést. 
-A projektet össze kellett kötni a SonarClouddal, ehhez a SonarCLoud felületén található útmutatót kellett követnünk, kiegészítettük a pom.xml fájlt a szükséges tulajdonságokkal:
+A projektet össze kellett kötni a SonarClouddal, ehhez a SonarCloud felületén található útmutatót kellett követnünk, kiegészítettük a pom.xml fájlt a szükséges tulajdonságokkal:
 ![sonarcloud_pom.png](sonarcloud_pom.png)
 
 Ezután létre kellett hozni az action futásához szükséges yaml fájlt. Így már sikeresen lefordul a github action, és a SonarCloud oldalán is láthatjuk az analízis eredményét. Az így talált hibákat javítottuk.
