@@ -4,7 +4,7 @@
 Feature: A szabotor nem tudja elrontani a csovet, mert foltozasi garancia van rajta
 
   Scenario: A szabotor megprobal elrontani egy csovet, de foltozasi garancia van rajta, ezert nem jar sikerrel.
-    Given Egy t�bla egy pumpaval ("p1") egy forrassal ("f1"), koztuk egy csovel ("cs1").
+    Given Egy tábla egy pumpaval ("p1") egy forrassal ("f1"), koztuk egy csovel ("cs1").
       And Egy szerelo ("sz1"), ami "cs1"-n all.
       And Egy szabotor ("sz2"), ami "p1"-n all.
       And A "cs1" cso torott.
