@@ -13,7 +13,7 @@ public class GamePanel extends JPanel {
     /**
      * A singelton instance-je a GamePanelnek.
      */
-    private static GamePanel single_instance = null;
+    private static GamePanel singleInstance = null;
 
     /**
      * Singleton osztály, hogy csak egyetlen GamePanel objektum létezzen.
@@ -21,10 +21,10 @@ public class GamePanel extends JPanel {
      */
     public static synchronized GamePanel getInstance()
     {
-        if (single_instance == null)
-            single_instance = new GamePanel();
+        if (singleInstance == null)
+            singleInstance = new GamePanel();
 
-        return single_instance;
+        return singleInstance;
     }
 
     /**
@@ -45,7 +45,7 @@ public class GamePanel extends JPanel {
     /**
      * A pontokat szemléltető címke: "szabotőrok pontja - szerelők pontja" formátumban
      */
-    JLabel score_;
+    JLabel score;
 
     /**
      * Default Konstruktora a Game Panelnek.
@@ -55,15 +55,16 @@ public class GamePanel extends JPanel {
         jatekosok = new ArrayList<>();
         csovek = new ArrayList<>();
         csucsok = new ArrayList<>();
-        score_ = new JLabel("Score: "+Kontroller.getInstance().getSzabotorPontok()+"-"+Kontroller.getInstance().getSzereloPontok());
-        score_.setAlignmentY(JLabel.BOTTOM_ALIGNMENT);
-        this.add(score_);
+        score = new JLabel("Score: "+Kontroller.getInstance().getSzabotorPontok()+"-"+Kontroller.getInstance().getSzereloPontok());
+        score.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+        this.add(score);
     }
 
     /**
      * Kirajzolja a pályát. Ez a csővek, csúcsok és játékosok kirajzolását jelenti.
      * @param g A grafikus objektum, amire rajzolunk.
      */
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
@@ -76,7 +77,7 @@ public class GamePanel extends JPanel {
         for (JatekosView j : jatekosok){
             j.draw(g);
         }
-        score_.setText("Score: "+Kontroller.getInstance().getSzabotorPontok()+"-"+Kontroller.getInstance().getSzereloPontok());
+        score.setText("Score: "+Kontroller.getInstance().getSzabotorPontok()+"-"+Kontroller.getInstance().getSzereloPontok());
     }
 
     /**
@@ -144,13 +145,13 @@ public class GamePanel extends JPanel {
      * @return A csövet cipelő játékosok listája.
      */
     public List<JatekosView> getPlayerViewFromCso(Cso c){
-        List<JatekosView> jatekosok = new ArrayList<>();
+        List<JatekosView> cipeloJatekosok = new ArrayList<>();
         for (JatekosView jv : this.jatekosok){
             if (jv.getJatekos().getCso() == c){
-                jatekosok.add(jv);
+                cipeloJatekosok.add(jv);
             }
         }
-        return jatekosok;
+        return cipeloJatekosok;
     }
 
     /**
@@ -183,8 +184,8 @@ public class GamePanel extends JPanel {
         b = from.add(oldal.multiply(size));
         c = from.add(oldal.multiply(-size));
 
-        int x[] = {(int)a.getX(),(int)b.getX(),(int)c.getX()};
-        int y[] = {(int)a.getY(),(int)b.getY(),(int)c.getY()};
+        int[] x = {(int)a.getX(),(int)b.getX(),(int)c.getX()};
+        int[] y = {(int)a.getY(),(int)b.getY(),(int)c.getY()};
         g.fillPolygon(x,y,3);
     }
 

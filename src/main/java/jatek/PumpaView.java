@@ -58,12 +58,12 @@ public class PumpaView extends CsucsView{
         for (int i=0; i<szomszedoscsovek.size(); i++){
             if(!szomszedoscsovek.subList(0,i).contains(szomszedoscsovek.get(i))) {
                 CsoView cv = GamePanel.getInstance().getCsoViewFromCso(szomszedoscsovek.get(i));
-                Vec2 direction = new Vec2(cv.getX1() - getX(), cv.getY1() - getY());
+                Vec2 direction = new Vec2(cv.getX1() - (double)getX(), cv.getY1() - (double)getY());
                 if (cv.getX1() == getX() && cv.getY1() == getY()) {
-                    direction = new Vec2(cv.getX2() - getX(), cv.getY2() - getY());
+                    direction = new Vec2(cv.getX2() - (double)getX(), cv.getY2() - (double)getY());
                 }
                 direction = direction.normalize();
-                direction = direction.multiply(radius - 5);
+                direction = direction.multiply(radius - 5.0);
                 g.drawString(Integer.toString(i + 1), (int) (getX() + direction.getX() - 5), (int) (getY() + direction.getY() + 5));
             }
         }
@@ -72,28 +72,28 @@ public class PumpaView extends CsucsView{
         g.setColor(Color.BLACK);
         Cso kimeneti = szomszedoscsovek.get(pumpa.getKimenetiCso());
         CsoView kimenetiView = GamePanel.getInstance().getCsoViewFromCso(kimeneti);
-        Vec2 direction = new Vec2(kimenetiView.getX1()-getX(),kimenetiView.getY1()-getY());
+        Vec2 direction = new Vec2(kimenetiView.getX1()-(double)getX(),kimenetiView.getY1()-(double)getY());
         if (kimenetiView.getX1() == getX() && kimenetiView.getY1() == getY()) {
-            direction = new Vec2(kimenetiView.getX2() - getX(), kimenetiView.getY2() - getY());
+            direction = new Vec2(kimenetiView.getX2() - (double)getX(), kimenetiView.getY2() - (double)getY());
         }
         direction = direction.normalize();
 
-        GamePanel.getInstance().drawTriangle(g,new Vec2(getX(),getY()).add(direction.multiply(radius+10)),direction.multiply(3), 8);
+        GamePanel.getInstance().drawTriangle(g,new Vec2(getX(),getY()).add(direction.multiply(radius+10.0)),direction.multiply(3), 8);
         g.setColor(Color.WHITE);
-        GamePanel.getInstance().drawTriangle(g,new Vec2(getX(),getY()).add(direction.multiply(radius+12)),direction.multiply(3), 5);
+        GamePanel.getInstance().drawTriangle(g,new Vec2(getX(),getY()).add(direction.multiply(radius+12.0)),direction.multiply(3), 5);
 
         //kirajzolja a bemeneti cso iranyat
         Cso bemeneti = szomszedoscsovek.get(pumpa.getBemenetiCso());
         CsoView bemenetiView = GamePanel.getInstance().getCsoViewFromCso(bemeneti);
-        Vec2 direction2 = new Vec2(bemenetiView.getX1()-getX(),bemenetiView.getY1()-getY());
+        Vec2 direction2 = new Vec2(bemenetiView.getX1()-(double)getX(),bemenetiView.getY1()-(double)getY());
         if (bemenetiView.getX1() == getX() && bemenetiView.getY1() == getY()) {
-            direction2 = new Vec2(bemenetiView.getX2() - getX(), bemenetiView.getY2() - getY());
+            direction2 = new Vec2(bemenetiView.getX2() - (double)getX(), bemenetiView.getY2() - (double)getY());
         }
         direction2 = direction2.normalize();
         g.setColor(Color.BLACK);
-        GamePanel.getInstance().drawTriangle(g,new Vec2(getX(),getY()).add(direction2.multiply(radius+40)),direction2.multiply(-3), 8);
+        GamePanel.getInstance().drawTriangle(g,new Vec2(getX(),getY()).add(direction2.multiply(radius+40.0)),direction2.multiply(-3), 8);
         g.setColor(Color.WHITE);
-        GamePanel.getInstance().drawTriangle(g,new Vec2(getX(),getY()).add(direction2.multiply(radius+38)),direction2.multiply(-3), 5);
+        GamePanel.getInstance().drawTriangle(g,new Vec2(getX(),getY()).add(direction2.multiply(radius+38.0)),direction2.multiply(-3), 5);
     }
 
     /**

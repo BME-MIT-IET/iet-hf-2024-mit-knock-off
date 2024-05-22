@@ -50,7 +50,10 @@ public  class Kontroller {
     /**
      * A singleton referenciája
      */
-    private static Kontroller single_instance = null;
+    private static Kontroller singleInstance = null;
+
+    
+    private Random r = new Random();
 
     /**
      * A singletont lekérdező függvény.
@@ -58,10 +61,10 @@ public  class Kontroller {
      */
     public static synchronized Kontroller getInstance()
     {
-        if (single_instance == null)
-            single_instance = new Kontroller();
+        if (singleInstance == null)
+            singleInstance = new Kontroller();
 
-        return single_instance;
+        return singleInstance;
     }
 
     /**
@@ -282,10 +285,13 @@ public  class Kontroller {
      * @param csapat a csapat neve, lehet "szerelok" vagy "szabotorok".
      */
     public void pontNovel(String csapat){
-        switch (csapat) {
-            case "szerelok" -> szereloPontok++;
-            case "szabotorok" -> szabotorPontok++;
+        if (csapat.equals("szerelok")) {
+             szereloPontok++;
         }
+        else{
+            szabotorPontok++;
+        }
+        
         Kontroller.getInstance().ujraRajzol();
     }
 
@@ -294,8 +300,6 @@ public  class Kontroller {
      */
     public void veletlenPumpaElrontas(){
         int percent = 1;
-
-        Random r = new Random();
 
         for (Csucs cs : csucsok) {
             if (r.nextInt(100) < percent) {

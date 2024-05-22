@@ -33,7 +33,7 @@ public class SzereloView extends JatekosView{
         if(aktJatekos == szerelo){
             //ha a szerelőnél van tárgy, akkor kiírja a képernyő aljára, ha nincs nála semmi, nem ír ki semmit
             if(szerelo.getCsoveg()!=null || szerelo.getPumpa()!=null){
-                String itemString =new String("Item: ");
+                String itemString = "Item: ";
                 if(szerelo.getCsoveg()!=null){
                     itemString+="Csővég";
                 }
@@ -49,7 +49,7 @@ public class SzereloView extends JatekosView{
         }
 
         //háromszög pontjai
-        int[] xpoints = {getX(),(int)(getX()-9),(int)(getX()+9)};
+        int[] xpoints = {getX(),(getX()-9),(getX()+9)};
         int[] ypoints = {getY()-9, getY()+9, getY()+9};
         g.fillPolygon(xpoints, ypoints, 3/*haromszog*/);
 

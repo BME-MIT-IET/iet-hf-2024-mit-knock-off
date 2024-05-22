@@ -10,6 +10,8 @@ import java.util.Random;
  * Passzív elem tehát víz úgy folyhat rajta, ha egy aktív elem szivattyúz belőle vagy bele pumpál.
  */
 public class Cso extends Mezo {
+    
+    private Random random = new Random();
 
     /**
      * A szomszédos csúcsok listája
@@ -59,7 +61,7 @@ public class Cso extends Mezo {
      * @return Igazat ad vissza ha a játékos ezen a mezőn marad mozgása végén.
      */
     public boolean jatekostElfogad(Jatekos j) {
-        if(getJatekosRajta().size() == 0 && szomszedosCsucs.size() == 2){
+        if(getJatekosRajta().isEmpty() && szomszedosCsucs.size() == 2){
             if(allapot == Allapot.NORMALIS){
                 getJatekosRajta().add(j);
                 return true;
@@ -75,7 +77,6 @@ public class Cso extends Mezo {
                     j.setAktMezo(det);
                 }
                 else {
-                    Random random = new Random();
                     int irany = random.nextInt(2);
                     szomszedosCsucs.get(irany).jatekostElfogad(j);
                     j.setAktMezo(szomszedosCsucs.get(irany));
@@ -95,7 +96,6 @@ public class Cso extends Mezo {
         Cso fele = new Cso();
         Csucs szCsucs = this.szomszedosCsucs.get(0);
         szCsucs.csoCsere(this, fele);
-        //szCsucs.felcsatol(fele);
         p.felcsatol(fele);
         p.felcsatol(this);
         Kontroller.getInstance().addCso(fele);
@@ -109,7 +109,7 @@ public class Cso extends Mezo {
      */
     @Override
     public List<? extends Mezo> getNeighbours() {
-        return szomszedosCsucs;
+        return getSzomszedosCsucs();
     }
 
     /**
@@ -128,7 +128,6 @@ public class Cso extends Mezo {
     public void szereloJavit() {
         if(rossz){
             setRossz(false);
-            Random random = new Random();
             foltozasiGarancia = random.nextInt(3) + 2;
         }
     }
@@ -185,7 +184,7 @@ public class Cso extends Mezo {
     public void stepTime(){
         if(timeToNormal == 1){
             allapotValtozas(Allapot.NORMALIS);
-            if(getJatekosRajta().size() != 0){
+            if(!getJatekosRajta().isEmpty()){
                 getJatekosRajta().get(0).leragad(false);
             }
         }
@@ -270,6 +269,7 @@ public class Cso extends Mezo {
      * Beallitja a determinisztikus mukodeshez a csucsot amire a jatekos csuszik
      * @param csucs A csucs, amire csuszhat.
      */
+    @Override
     public void setDet(Csucs csucs){
         det = csucs;
     }
